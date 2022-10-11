@@ -84,6 +84,4 @@ class DocsActivityViewModel(val fileDir: File):ViewModel(){
         }
 
     }
-
-
 }

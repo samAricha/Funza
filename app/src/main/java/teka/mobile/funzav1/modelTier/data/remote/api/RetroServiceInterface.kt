@@ -8,4 +8,7 @@ import retrofit2.http.Url
 interface RetroServiceInterface {
     @GET
     fun downloadPdfFile(@Url pdfUrl:String):Call<ResponseBody>
+
+    @GET
+    fun getNotes():Call<ResponseBody>
 }

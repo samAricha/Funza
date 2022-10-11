@@ -6,7 +6,7 @@ import teka.mobile.funzav1.utils.Credentials
 
 class RetrofitInstance {
 
-    companion object{
+    companion  object{
         fun getRetrofitInstance():Retrofit{
             return Retrofit.Builder()
                 .baseUrl(Credentials.BASE_URL)
