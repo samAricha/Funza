@@ -5,4 +5,6 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class UnitModel(
     val unitCode:String? = null,
-    val unitName:String? = null)
+    val unitName:String? = null,
+    //val chapters:List<ChapterModel>
+    )
