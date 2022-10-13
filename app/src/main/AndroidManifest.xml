@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Funzav1">
         <activity
+            android:name=".viewTier.ChaptersActivity"
+            android:exported="false" />
+        <activity
             android:name=".viewTier.NotesActivity"
             android:exported="false" />
         <activity

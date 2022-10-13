@@ -18,10 +18,8 @@ class NotesActivity : AppCompatActivity() {
 
     lateinit var mDatabaseRef: DatabaseReference
     lateinit var unitsList: MutableList<UnitModel>
-   lateinit var chaptersList: MutableList<ChapterModel>
     lateinit var recyclerView: RecyclerView
     lateinit var unitsAdapter: UnitsAdapter
-    lateinit var chaptersAdapter: ChaptersAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,16 +35,18 @@ class NotesActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this@NotesActivity)
         // Write a message to the database
         val database = FirebaseDatabase.getInstance()
-        mDatabaseRef = database.getReference("root/Documents/Class/Units")
+        mDatabaseRef = database.getReference("root/Documents/Class/Units/")
 
         unitsList = arrayListOf()
-        //chaptersList = arrayListOf()
+        openUnits()
+    }
 
+    fun openUnits(){
         mDatabaseRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val data = dataSnapshot.children
                 for (unit in data){
-                    var unitDetails = unit.getValue(UnitModel::class.java)
+                    val unitDetails = unit.getValue(UnitModel::class.java)
                     unitsList.add(unitDetails!!)
                 }
                 unitsAdapter = UnitsAdapter()
@@ -54,11 +54,10 @@ class NotesActivity : AppCompatActivity() {
                 recyclerView.adapter = unitsAdapter
                 unitsAdapter.setOnItemClickListener(object: UnitsAdapter.onItemClickListener{
                     override fun ontItemClick(position: Int) {
-                        //chaptersList = unitsList[position].chapters as MutableList<ChapterModel>
                         Toast.makeText(this@NotesActivity, unitsList[position].unitName, Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this@NotesActivity, ReadPdfActivity::class.java)
+                        val intent = Intent(this@NotesActivity, ChaptersActivity::class.java)
+                        intent.putExtra("unitName",unitsList[position].unitName)
                         startActivity(intent)
-                        //openChapters()
                     }
 
                 })
@@ -70,20 +69,7 @@ class NotesActivity : AppCompatActivity() {
                 Log.w(TAG, "loadPost:onCancelled", error.toException())
             }
         })
-
     }
 
-    fun openChapters(){
-        chaptersAdapter = ChaptersAdapter()
-        chaptersAdapter.setChaptersList(chaptersList)
-        recyclerView.adapter = chaptersAdapter
 
-        chaptersAdapter.setOnChapterClickListener(object :ChaptersAdapter.onChapterClickListener{
-            override fun ontItemClick(position: Int) {
-                Toast.makeText(this@NotesActivity, chaptersList[position].chapterName, Toast.LENGTH_SHORT).show()
-                val intent = Intent(this@NotesActivity, ReadPdfActivity::class.java)
-                startActivity(intent)
-            }
-        })
-    }
 }
