@@ -1,5 +1,6 @@
 package teka.mobile.funzav1.viewTier
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -29,8 +30,24 @@ class ReadPdfActivity: AppCompatActivity() {
 
         initViewModel()
         shareButton.setOnClickListener {
-
+            sharePDF()
         }
+    }
+
+    private fun sharePDF() {
+        val shareIntent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(
+                applicationContext,
+                "teka.mobile.funzav1.fileprovider",
+                docsViewModel.getPdfFileUri()
+            ))
+
+            flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
+            type = "application/pdf"
+        }
+        val sendIntent = Intent.createChooser(shareIntent, null)
+        startActivity(sendIntent)
     }
 
     private fun initViewModel() {

@@ -19,13 +19,13 @@ class DocsActivityViewModel(val fileDir: File):ViewModel(){
     var isFileReadyObserver = MutableLiveData<Boolean>()
 
     init {
-        dirPath = "${fileDir}/cert/pdffiles"
+        dirPath = "${fileDir}/cert/pdffiles"//this is the directory that the files will be stored
         val dirFile = File(dirPath)
         if(!dirFile.exists()){
             dirFile.mkdirs()
         }
         fileName = "DemoGraphs.pdf"
-        val file = "${dirPath}/${fileName}"
+        val file = "${dirPath}/${fileName}"//this is the actual downloaded file
         pdfFileName = File(file)
         if(pdfFileName.exists()){
             pdfFileName.delete()
@@ -80,7 +80,7 @@ class DocsActivityViewModel(val fileDir: File):ViewModel(){
             fos.close()
             isFileReadyObserver.postValue(true)
         }catch (e: IOException){
-            isFileReadyObserver.postValue(true)
+            isFileReadyObserver.postValue(false)
         }
 
     }
