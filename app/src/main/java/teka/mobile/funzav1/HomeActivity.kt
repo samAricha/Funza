@@ -9,6 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
+import teka.mobile.funzav1.viewTier.DownloadActivity
+import teka.mobile.funzav1.viewTier.DownloadActivity2
+import teka.mobile.funzav1.viewTier.DownloadActivity3
 import teka.mobile.funzav1.viewTier.NotesActivity
 
 
@@ -56,10 +59,13 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
            R.id.nav_library -> {
                Toast.makeText(this, "Library", Toast.LENGTH_SHORT).show()
                true
-           }
-
-           R.id.nav_clubs -> {
+           }R.id.nav_clubs -> {
                Toast.makeText(this, "Clubs", Toast.LENGTH_SHORT).show()
+               true
+           }R.id.nav_downloads->{
+               Toast.makeText(this, "Downloads", Toast.LENGTH_SHORT).show()
+               val intent = Intent(this, DownloadActivity3::class.java)
+               startActivity(intent)
                true
            }
            else -> {
