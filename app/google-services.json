@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "286820882036",
+    "project_id": "funzav1",
+    "storage_bucket": "funzav1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:286820882036:android:44d16a7fd30479325b2321",
+        "android_client_info": {
+          "package_name": "teka.mobile.funzav1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "286820882036-vmd456ru164450bod7l3be6gpr9m6qnp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVGTMkv_M9P_ShdZyVk8EKvrRVaaCjowU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "286820882036-vmd456ru164450bod7l3be6gpr9m6qnp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
