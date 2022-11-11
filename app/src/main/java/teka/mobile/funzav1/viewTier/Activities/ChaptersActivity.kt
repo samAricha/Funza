@@ -1,31 +1,33 @@
-package teka.mobile.funzav1.viewTier
+package teka.mobile.funzav1.viewTier.Activities
 
 import android.content.ContentValues
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
 import teka.mobile.funzav1.R
 import teka.mobile.funzav1.modelTier.models.ChapterModel
-import teka.mobile.funzav1.modelTier.models.UnitModel
+import teka.mobile.funzav1.viewTier.Adapters.ChaptersAdapter
 
 class ChaptersActivity : AppCompatActivity() {
 
     lateinit var mDatabaseRef: DatabaseReference
     private lateinit var unitName: String
+    private lateinit var unitKey: String
     lateinit var chaptersList: MutableList<ChapterModel>
     lateinit var recyclerView: RecyclerView
     lateinit var chaptersAdapter: ChaptersAdapter
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chapters)
         unitName = intent.getStringExtra("unitName")!!
-
-
+        unitKey = unitName.replace(" ", "")
 
     }
 
@@ -39,7 +41,8 @@ class ChaptersActivity : AppCompatActivity() {
         mDatabaseRef = database.getReference("root/Documents/Class/Units")
 
         chaptersList = arrayListOf()
-        openChapters(unitName)
+        openChapters(unitKey)
+        //openChapters("MobileDevelopment")
     }
 
 
@@ -57,7 +60,7 @@ class ChaptersActivity : AppCompatActivity() {
                 chaptersAdapter.setChaptersList(chaptersList)
                 recyclerView.adapter = chaptersAdapter
 
-                chaptersAdapter.setOnChapterClickListener(object :ChaptersAdapter.onChapterClickListener{
+                chaptersAdapter.setOnChapterClickListener(object : ChaptersAdapter.onChapterClickListener{
                   override fun ontItemClick(position: Int) {
                       Toast.makeText(this@ChaptersActivity, chaptersList[position].chapterName, Toast.LENGTH_SHORT).show()
                       val intent = Intent(this@ChaptersActivity, ReadPdfActivity::class.java)

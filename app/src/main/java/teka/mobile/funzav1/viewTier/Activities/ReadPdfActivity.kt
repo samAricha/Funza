@@ -1,4 +1,4 @@
-package teka.mobile.funzav1.viewTier
+package teka.mobile.funzav1.viewTier.Activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -21,6 +21,7 @@ class ReadPdfActivity: AppCompatActivity() {
     lateinit var progressBar: ProgressBar
     lateinit var pdfView: PDFView
     lateinit var docsViewModel: DocsActivityViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_read_pdf)

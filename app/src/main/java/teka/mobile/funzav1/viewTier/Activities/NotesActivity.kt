@@ -1,17 +1,18 @@
-package teka.mobile.funzav1.viewTier
+package teka.mobile.funzav1.viewTier.Activities
 
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
 import teka.mobile.funzav1.R
-import teka.mobile.funzav1.modelTier.models.ChapterModel
 import teka.mobile.funzav1.modelTier.models.UnitModel
+import teka.mobile.funzav1.viewTier.Adapters.UnitsAdapter
 
 
 class NotesActivity : AppCompatActivity() {
@@ -24,6 +25,12 @@ class NotesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notes)
+
+        val fab: View = findViewById(R.id.fab)
+        fab.setOnClickListener { view ->
+            val intent = Intent(this@NotesActivity, SearchActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 
@@ -57,11 +64,10 @@ class NotesActivity : AppCompatActivity() {
                         Toast.makeText(this@NotesActivity, unitsList[position].unitName, Toast.LENGTH_SHORT).show()
                         val intent = Intent(this@NotesActivity, ChaptersActivity::class.java)
                         intent.putExtra("unitName",unitsList[position].unitName)
+                        //intent.putExtra("unitName",data[position].getKey())
                         startActivity(intent)
                     }
-
                 })
-
             }
 
             override fun onCancelled(error: DatabaseError) {

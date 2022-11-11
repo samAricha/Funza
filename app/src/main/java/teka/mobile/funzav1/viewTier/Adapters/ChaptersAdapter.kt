@@ -1,6 +1,5 @@
-package teka.mobile.funzav1.viewTier
+package teka.mobile.funzav1.viewTier.Adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +7,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import teka.mobile.funzav1.R
 import teka.mobile.funzav1.modelTier.models.ChapterModel
-import teka.mobile.funzav1.modelTier.models.UnitModel
 
 class ChaptersAdapter: RecyclerView.Adapter<ChaptersAdapter.MyViewHolder>() {
     //INTERFACE class that defines the click listener
@@ -17,12 +15,12 @@ class ChaptersAdapter: RecyclerView.Adapter<ChaptersAdapter.MyViewHolder>() {
     }
 
     private var chaptersList: MutableList<ChapterModel>? = null
-    private lateinit var mListener: ChaptersAdapter.onChapterClickListener
+    private lateinit var mListener: onChapterClickListener
 
 
 
     //setting the on item click listener
-    fun setOnChapterClickListener(listener: ChaptersAdapter.onChapterClickListener){
+    fun setOnChapterClickListener(listener: onChapterClickListener){
         mListener = listener
     }
     //setting the list of chapters per unit
@@ -48,7 +46,7 @@ class ChaptersAdapter: RecyclerView.Adapter<ChaptersAdapter.MyViewHolder>() {
     /*
     * VIEWHOLDER CLASS
     * */
-    class MyViewHolder(view: View, listener: ChaptersAdapter.onChapterClickListener):RecyclerView.ViewHolder(view) {
+    class MyViewHolder(view: View, listener: onChapterClickListener):RecyclerView.ViewHolder(view) {
 
         val chapterName = view.findViewById<TextView>(R.id.chapterTitle)
 

@@ -9,10 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
-import teka.mobile.funzav1.viewTier.DownloadActivity
-import teka.mobile.funzav1.viewTier.DownloadActivity2
-import teka.mobile.funzav1.viewTier.DownloadActivity3
-import teka.mobile.funzav1.viewTier.NotesActivity
+import teka.mobile.funzav1.viewTier.Activities.DownloadActivity3
+import teka.mobile.funzav1.viewTier.Activities.NotesActivity
 
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener  {
@@ -47,28 +45,23 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
            R.id.nav_home -> {
                Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show()
                true
-           }
-
-           R.id.nav_notes -> {
+           }R.id.nav_notes -> {
                Toast.makeText(this, "Notes", Toast.LENGTH_SHORT).show()
                val intent = Intent(this, NotesActivity::class.java)
                startActivity(intent)
                true
-           }
-
-           R.id.nav_library -> {
+           }R.id.nav_library -> {
                Toast.makeText(this, "Library", Toast.LENGTH_SHORT).show()
                true
            }R.id.nav_clubs -> {
                Toast.makeText(this, "Clubs", Toast.LENGTH_SHORT).show()
                true
            }R.id.nav_downloads->{
-               Toast.makeText(this, "Downloads", Toast.LENGTH_SHORT).show()
+               //Toast.makeText(this, "Downloads", Toast.LENGTH_SHORT).show()
                val intent = Intent(this, DownloadActivity3::class.java)
                startActivity(intent)
                true
-           }
-           else -> {
+           }else -> {
                false
            }
 

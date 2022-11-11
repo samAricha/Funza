@@ -1,12 +1,10 @@
-package teka.mobile.funzav1.viewTier
+package teka.mobile.funzav1.viewTier.Adapters
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import teka.mobile.funzav1.R
 import teka.mobile.funzav1.modelTier.models.UnitModel
